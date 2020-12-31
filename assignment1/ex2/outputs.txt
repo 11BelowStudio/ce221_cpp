@@ -1,0 +1,11 @@
+Scaling factor used: 3.3
+affair   *  3
+dead     **********  31
+denmark  ********  25
+hate     *  1
+heart    *********  29
+heaven   **************  43
+love     ********************  66
+macbeth    0
+music    ***  8
+sorrow   **  6

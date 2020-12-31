@@ -1,0 +1,129 @@
+Some useful unix commands
+
+
+man 	manuals - the most important command.
+	example: man pgp
+
+ls 	directory listing of current directory. switches include
+   -l   extra info
+   -a   including hidden files (like . and ..)
+   -R   recurse through directories.
+
+
+cd 	change directory. Unlike windows, cd on its own goes to the
+	home directory.
+	
+
+pwd	print working directory (where am i?)
+
+who	who else is on this machine
+
+which	where is some program? For example,
+	which pgp          will output
+	/usr/bin/pgp
+
+wild cards	these refer to FILES. command * means all,
+		command hello*sailor means all files starting with hello
+			and ending with sailor.
+		command a.b means a "any one character" b
+		
+		if you want to use * or . or ? (0 or one characters) or
+		  [] (lists of characters) in another context, they
+		  must be escaped. e.g.    a\.b means "a.b". See grep
+
+grep	a little beauty. Search a bunch of files for particular strings.
+	grep directory unixcommands.txt 		gives
+	ls      directory listing of current directory. switches include
+	cd      change directory. Unlike windows, cd on its own goes to the
+	        home directory.
+	pwd     print working directory (where am i?)
+	...... more stuff
+	
+	you can get fancy with the test word, and use wild cards, but
+	the special characters need to be escaped.
+	grep a\*b *.txt
+		will find ab, or aslkdkdkkdb or ayb in all files ending in .txt
+	grep File\[abcdefgyz\] thing
+	will look in thing for Filea  Fileb, Filec  etc.
+	
+	grep uses "regular expressions". They are an interesting study in themselves.
+	http://etext.lib.virginia.edu/helpsheets/regex.html
+
+
+less	means more. Just pages out a long text file on the screen
+
+chmod	change the "mode" or protection of a file. Read the manual, but
+	chmod +x filename
+	will make that executable. It will try and treat it as a shell command.
+
+ping	sees if a machine is out there.
+	ping csc529
+	out put is a set of responses every second or so,
+	kill with cntrl C
+
+
+touch	updates timestamp on a file, or creates an empty new one.
+
+pushd	takes a directory, puts you there, pushes current dir on a stack
+
+popd	gets you back to the last directory you pushd from.
+
+rm	remove a file. rm *.exe does all exes rm * is a nightmare
+	rm -r * removes everything recursively
+
+cp 	copies from file to file or from file to directory.
+	cp f.x f.y    			makes a copy
+	cp f.x dir			copies to a directory
+
+mv	rename - stands for move. moves among directories of same
+	file system.
+	mv old.file older.file
+
+wc	word count in a text file. -l switch only counts lines
+
+diff	lovely command. Compares two files, silent if no difference.
+	
+time 	says how long a command takes to time a java programme, you might
+	time java fred arg1 arg2
+	man time for details
+	
+source	when a shell calls another shell, it creates a new nested
+	environment for it to work in. if you say
+	source Myshell 
+	  instead of just
+	Myshell
+	then it runs in the same environment as the original shell
+	
+setenv	types all the current environmental variables
+	setenv | less
+	creates or modifies environmental variables
+	setenv hooha "hello sailor"
+	  if you echo $hooha it will echo hello sailor
+	  
+unsetenv destroys environmental variable.
+
+jobs	tells you which parallel jobs you have running
+
+
+kill	kills parallel jobs, but has odd syntax
+	kill -9 pidnumber or kill -9 %jobnumber
+
+ps	displays currently running jobs (for you).
+
+mail	(or nail). sends mail, including attachements.
+	see man mail, and the little shell Mailer in
+	//cscourse/course/cc436/Assign2
+
+
+Special characters in command line
+
+|	pipe  if you
+	grep  fish *.txt | wc -l
+	it will tell you how many lines in all of your text files had the
+	word fish in it.
+
+;	sequence command
+	ls; ls; date;ls
+
+&	parallel. This command is to be done in the background.
+	you can thus run many programs in the same window.
